@@ -12,9 +12,8 @@ This is a simple implementation of the classic game Tic-Tac-Toe written in Java.
 ## How to Run
 To run the game, you need to have Java installed on your computer. Follow these steps:
 1. Clone the repository or download the source code.
-2. Navigate to the directory containing the `TicTacToe.java` file.
-3. Compile the Java file by running `javac TicTacToe.java` in your terminal.
-4. Run the compiled class with `java TicTacToe`.
+2. Navigate to the directory containing the `Main.java` file.
+3. Compile the Java file by running `Main.java` in your terminal.
 
 ## Game Rules
 - The game is played on a 3x3 grid.
