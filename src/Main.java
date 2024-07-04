@@ -159,42 +159,55 @@ public class Main {
     }
 
     public static void checkForEnd(char[][] board) {
-        if ((checkCellValue(board[0][0]) == checkCellValue(board[0][1]) && //Checks for Top row win.
+        char winner = ' ';
+
+        if (checkCellValue(board[0][0]) == checkCellValue(board[0][1]) && //Checks for Top row win.
                 checkCellValue(board[0][1]) == checkCellValue(board[0][2]) &&
-                checkCellValue(board[0][0]) != ' ') ||
+                checkCellValue(board[0][0]) != ' ')
+            winner = checkCellValue(board[0][0]);
 
-                (checkCellValue(board[1][0]) == checkCellValue(board[1][1]) && //Checks for Middle Row win.
-                        checkCellValue(board[1][1]) == checkCellValue(board[1][2]) &&
-                        checkCellValue(board[1][0]) != ' ') ||
+        else if (checkCellValue(board[1][0]) == checkCellValue(board[1][1]) && //Checks for Middle Row win.
+                checkCellValue(board[1][1]) == checkCellValue(board[1][2]) &&
+                checkCellValue(board[1][0]) != ' ')
+            winner = checkCellValue(board[1][0]);
 
-                (checkCellValue(board[2][0]) == checkCellValue(board[2][1]) && //Checks for Bottom Row win.
-                        checkCellValue(board[2][1]) == checkCellValue(board[2][2]) &&
-                        checkCellValue(board[2][0]) != ' ') ||
+        else if (checkCellValue(board[2][0]) == checkCellValue(board[2][1]) && //Checks for Bottom Row win.
+                checkCellValue(board[2][1]) == checkCellValue(board[2][2]) &&
+                checkCellValue(board[2][0]) != ' ')
+            winner = checkCellValue(board[2][0]);
 
-                (checkCellValue(board[0][0]) == checkCellValue(board[1][1]) && //Checks for left diagonal win.
-                        checkCellValue(board[1][1]) == checkCellValue(board[2][2]) &&
-                        checkCellValue(board[0][0]) != ' ') ||
+        else if (checkCellValue(board[0][0]) == checkCellValue(board[1][1]) && //Checks for left diagonal win.
+                checkCellValue(board[1][1]) == checkCellValue(board[2][2]) &&
+                checkCellValue(board[0][0]) != ' ')
+            winner = checkCellValue(board[0][0]);
 
-                (checkCellValue(board[0][2]) == checkCellValue(board[1][1]) && //Checks for right diagonal win.
-                        checkCellValue(board[1][1]) == checkCellValue(board[2][0]) &&
-                        checkCellValue(board[0][2]) != ' ') ||
+        else if (checkCellValue(board[0][2]) == checkCellValue(board[1][1]) && //Checks for right diagonal win.
+                checkCellValue(board[1][1]) == checkCellValue(board[2][0]) &&
+                checkCellValue(board[0][2]) != ' ')
+            winner = checkCellValue(board[0][2]);
 
-                (checkCellValue(board[0][0]) == checkCellValue(board[1][0]) && //Checks for left column win.
-                        checkCellValue(board[1][0]) == checkCellValue(board[2][0]) &&
-                        checkCellValue(board[0][0]) != ' ') ||
+        else if (checkCellValue(board[0][0]) == checkCellValue(board[1][0]) && //Checks for left column win.
+                checkCellValue(board[1][0]) == checkCellValue(board[2][0]) &&
+                checkCellValue(board[0][0]) != ' ')
+            winner = checkCellValue(board[0][0]);
 
-                (checkCellValue(board[0][1]) == checkCellValue(board[1][1]) && //Checks for middle column win.
-                        checkCellValue(board[1][1]) == checkCellValue(board[2][1]) &&
-                        checkCellValue(board[0][1]) != ' ') ||
+        else if (checkCellValue(board[0][1]) == checkCellValue(board[1][1]) && //Checks for middle column win.
+                checkCellValue(board[1][1]) == checkCellValue(board[2][1]) &&
+                checkCellValue(board[0][1]) != ' ')
+            winner = checkCellValue(board[0][1]);
 
-                (checkCellValue(board[0][2]) == checkCellValue(board[1][2]) && //Checks for right column win.
-                        checkCellValue(board[1][2]) == checkCellValue(board[2][2]) &&
-                        checkCellValue(board[0][2]) != ' ')) {
-            exitCondition(checkCellValue(board[0][0]));
-        } else if (isXorO(board[0][0]) && isXorO(board[0][1]) && isXorO(board[0][2]) &&
+        else if (checkCellValue(board[0][2]) == checkCellValue(board[1][2]) && //Checks for right column win.
+                checkCellValue(board[1][2]) == checkCellValue(board[2][2]) &&
+                checkCellValue(board[0][2]) != ' ')
+            winner = checkCellValue(board[0][2]);
+
+        else if (isXorO(board[0][0]) && isXorO(board[0][1]) && isXorO(board[0][2]) &&
                 isXorO(board[1][0]) && isXorO(board[1][1]) && isXorO(board[1][2]) &&
                 isXorO(board[2][0]) && isXorO(board[2][1]) && isXorO(board[2][2]))
             exitCondition('D');
+
+        if (winner != ' ')
+            exitCondition(winner);
     }
 
     public static boolean isXorO(char cellIndex) {
